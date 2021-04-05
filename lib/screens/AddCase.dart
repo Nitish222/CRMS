@@ -112,6 +112,8 @@ class _addCase_state extends State<AddCase>{
     _CaseDescriptionController.text = '';
     _statementIdController.text = '';
     _caseStatusController.text = '';
+    _firIdController.text = '';
+    _evidenceIdController.text = '';
   }
 
   searchField() {
@@ -145,6 +147,7 @@ class _addCase_state extends State<AddCase>{
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(_titleProgress),
         actions: <Widget>[
           IconButton(icon: Icon(Icons.add),

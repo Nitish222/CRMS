@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/Services/Actors/PetitionerAPI.dart';
 import 'package:myapp/Services/CaseServices/Case.dart';
 import 'package:myapp/Services/CaseServices/CaseAPI.dart';
+import 'package:myapp/Services/CaseServices/petitioner.dart';
 
 class PetitionerDataModel extends StatefulWidget{
   PetitionerDataModel():super();
@@ -13,7 +15,7 @@ class PetitionerDataModel extends StatefulWidget{
 
 
 class _DataModel_State extends State<PetitionerDataModel>{
-  List<Petitioner> _case;
+  List<Petitioner> _petitioner;
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   bool _isUpdating;
   String _titleProgress;
@@ -21,7 +23,7 @@ class _DataModel_State extends State<PetitionerDataModel>{
   void initState(){
     super.initState();
     //for users
-    _accused = [];
+    _petitioner= [];
     _titleProgress = widget.title;
   }
   _getAllPetitioner(){
@@ -43,32 +45,29 @@ class _DataModel_State extends State<PetitionerDataModel>{
   SingleChildScrollView _dataBody(){
     return SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: Align(
-            alignment: Align.,
-            child: DataTable(
+        child:  DataTable(
                 columns:[
                   DataColumn(label: Text('petitioner_id')),
                   DataColumn(label: Text('petitioner_first_name')),
                   DataColumn(label: Text('petitioner_last_name')),
                   DataColumn(label: Text('father_name')),
-                  DataColumn(label: Text('petitioner_contact')),
                   DataColumn(label: Text('petitioner_gender')),
+                  DataColumn(label: Text('petitioner_contact')),
                   DataColumn(label: Text('petitioner_address')),
                 ],
             rows: _petitioner.map((petitioners)=> DataRow(
                 cells: [
                   DataCell(Text(petitioners.petitioner_id)),
-                  DataCell(Text(petitioners.petitioner_irst_name.toUpperCase())),
+                  DataCell(Text(petitioners.petitioner_first_name.toUpperCase())),
                   DataCell(Text(petitioners.petitioner_last_name.toUpperCase())),
                   DataCell(Text(petitioners.father_name)),
                   DataCell(Text(petitioners.petitioner_gender)),
                   DataCell(Text(petitioners.petitioner_contact))
-                  DataCell(Text(petitioners.petitioner_address)),
+                  //DataCell(Text(petitioners.petitioner_address)),
                 ]
             )
             ).toList(),
           ),
-        )
     );
   }
   @override

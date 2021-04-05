@@ -97,7 +97,7 @@ class CaseAPI{
     }
   }
 
-  //Method to Delete Officer
+  //Method to Delete Case
   static Future<String> deleteCase(String caseId) async {
     try{
       var map = Map<String, dynamic>();

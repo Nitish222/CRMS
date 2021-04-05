@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/Services/Actors/AccusedAPI.dart';
+import 'package:myapp/Services/CaseServices/Accused.dart';
 import 'package:myapp/Services/CaseServices/Case.dart';
 import 'package:myapp/Services/CaseServices/CaseAPI.dart';
 
@@ -13,7 +15,7 @@ class AccusedDataModel extends StatefulWidget{
 
 
 class _DataModel_State extends State<AccusedDataModel>{
-  List<Accused> _case;
+  List<Accused> _accused;
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   bool _isUpdating;
   String _titleProgress;
@@ -43,8 +45,6 @@ class _DataModel_State extends State<AccusedDataModel>{
   SingleChildScrollView _dataBody(){
     return SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: Align(
-          alignment: Align.,
           child: DataTable(
             columns:[
               DataColumn(label: Text('accused_id')),
@@ -70,7 +70,6 @@ class _DataModel_State extends State<AccusedDataModel>{
             )
             ).toList(),
           ),
-        )
     );
   }
   @override

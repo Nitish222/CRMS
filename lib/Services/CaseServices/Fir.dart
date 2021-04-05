@@ -1,4 +1,4 @@
-class FIR{
+class Fir{
   String fir_id;
   String petitioner_id;
   String victim_id;
@@ -7,10 +7,10 @@ class FIR{
   String incident_date;
   String incident_location;
 
-  FIR({this.fir_id,this.petitioner_id,this.victim_id,this.date_filed, this.time_filed, this.incident_date, this.incident_location});
+  Fir({this.fir_id,this.petitioner_id,this.victim_id,this.date_filed, this.time_filed, this.incident_date, this.incident_location});
 
-  factory FIR.fromJson(Map<String,dynamic> json){
-    return FIR(
+  factory Fir.fromJson(Map<String,dynamic> json){
+    return Fir(
         fir_id: json['fir_id'] as String,
         petitioner_id: json['petitioner_id'] as String,
         victim_id: json['victim_id'] as String,

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/Services/Officer.dart';
 import 'package:myapp/Services/Services.dart';
 import 'package:myapp/models/CaseDataModel.dart';
-import 'package:myapp/models/EvidenceDataModel.dart';
+import 'package:myapp/models/EvidenceCategoryDataModel.dart';
 import 'package:myapp/models/FirDataModel.dart';
 import 'package:myapp/screens/AddCase.dart';
 

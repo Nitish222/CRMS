@@ -2,6 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/Services/CaseServices/Case.dart';
 import 'package:myapp/Services/CaseServices/CaseAPI.dart';
+import 'package:myapp/Services/CaseServices/petitioner.dart';
+import 'package:myapp/models/AccusedDataModel.dart';
+import 'package:myapp/models/EvidenceCategoryDataModel.dart';
+import 'package:myapp/models/PetitionaerDataModel.dart';
+import 'package:myapp/models/StatementsDataModel.dart';
+import 'package:myapp/models/VictimDataModel.dart';
+import 'package:myapp/screens/AddFir.dart';
 import 'package:myapp/screens/OfficerDash.dart';
 
 class CaseDetails extends StatefulWidget{
@@ -43,10 +50,12 @@ class _DataModel_State extends State<CaseDetails>{
       _titleProgress = message;
     });
   }
-
-  _addStatements(){
-
-  }
+  // navigateToFirManagement(){
+  //   Navigator.push(
+  //       _scaffoldKey.currentContext,
+  //       MaterialPageRoute(builder: (context) => AddFir(),
+  //       ));
+  // }
 
 
   @override
@@ -62,209 +71,47 @@ class _DataModel_State extends State<CaseDetails>{
           ),
         ],
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.all(40.0),
-          child: Column(
-            children: <Widget>[
-              Container(
-                height: 150,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20.0),
-                  image: DecorationImage(
-                    image: NetworkImage('https://static.toiimg.com/photo/62852551.cms'),
-                    fit: BoxFit.fitHeight,
-                  )
-                ),
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.bottomCenter,
-                      colors: [
-                        Colors.orange.withOpacity(.5),
-                        Colors.white.withOpacity(.5),
-                        Colors.green.withOpacity(.5),
-                      ]
-                    )
-                  ),
-                ),
-              ),
-              Row(
-                children: [
-                  Padding(padding: EdgeInsets.only(left:100),
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                            padding: EdgeInsets.only(left: 40.0,right: 40.0,top: 20.0,bottom: 20.0),
-                            child:SizedBox(
-                                width: MediaQuery.of(context).size.width*0.30,
-                                height: 100,
-                                child: ElevatedButton(
-                                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
-                                    overlayColor: MaterialStateProperty.all<Color>(Colors.red),
-                                  ),
-                                  child: Text('Statements Management',style: TextStyle(fontSize: 20,color: Colors.black),textAlign: TextAlign.center,),
-                                  onPressed: (){
-                                      showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                      return Dialog(
-                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-                                      elevation: 16,
-                                      child: Container(
-                                        height: 400.0,
-                                        width: 360.0,
-                                        child:  ListView(
-                                        children: <Widget>[
-                                          Padding(
-                                              padding: EdgeInsets.all(20.0),
-                                              child:SizedBox(
-                                                width: MediaQuery.of(context).size.width,
-                                                height: 40,
-                                                child: new TextFormField(
-                                                  controller: _IDController,
-                                                  decoration: const InputDecoration(
-                                                      labelText: 'ID',
-                                                      icon: const Padding(
-                                                          padding: const EdgeInsets.only(top: 15.0),
-                                                          child: const Icon(Icons.supervised_user_circle))),
-                                                ),
-                                              )),
-                                          Padding(
-                                              padding: EdgeInsets.all(20.0),
-                                              child:SizedBox(
-                                                width: MediaQuery.of(context).size.width,
-                                                height: 40,
-                                                child: new TextFormField(
-                                                  controller: _StatementController,
-                                                  decoration: const InputDecoration(
-                                                      labelText: 'Statement',
-                                                      icon: const Padding(
-                                                          padding: const EdgeInsets.only(top: 15.0),
-                                                          child: const Icon(Icons.supervised_user_circle))),
-                                                ),
-                                              )),
-                                          Padding(
-                                              padding: EdgeInsets.only(left: 40.0,right: 40.0,top: 20.0,bottom: 20.0),
-                                              child:SizedBox(
-                                                  width: MediaQuery.of(context).size.width,
-                                                  height: 100,
-                                                  child: ElevatedButton(
-                                                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
-                                                      overlayColor: MaterialStateProperty.all<Color>(Colors.red),
-                                                    ),
-                                                    child: Text('Submit',style: TextStyle(fontSize: 20,color: Colors.black),),
-                                                    onPressed: (){
-                                                      _addStatements();
-                                                    },
-                                                  )
-                                              )
-                                          ),
-                                          ]
-                                        ),
-                                      )
-                                      );
-                                      });
-                                  },
-                                )
-                            )
-                        ),
-                        Padding(
-                            padding: EdgeInsets.only(left: 40.0,right: 40.0,top: 20.0,bottom: 20.0),
-                            child:SizedBox(
-                                width: MediaQuery.of(context).size.width*0.30,
-                                height: 100,
-                                child: ElevatedButton(
-                                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
-                                    overlayColor: MaterialStateProperty.all<Color>(Colors.red),
-                                  ),
-                                  child: Text('Victim Management',style: TextStyle(fontSize: 20,color: Colors.black),),
-                                  onPressed: (){
-                                      //_updateCase();
-                                  },
-                                )
-                            )
-                        ),
-                        Padding(
-                            padding: EdgeInsets.only(left: 40.0,right: 40.0,top: 20.0,bottom: 20.0),
-                            child:SizedBox(
-                                width: MediaQuery.of(context).size.width*0.30,
-                                height: 100,
-                                child: ElevatedButton(
-                                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
-                                    overlayColor: MaterialStateProperty.all<Color>(Colors.red),
-                                  ),
-                                  child: Text('Conduct Investigation',style: TextStyle(fontSize: 20,color: Colors.black),),
-                                  onPressed: (){
-
-                                  },
-                                )
-                            )
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(padding: EdgeInsets.only(left:100),
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                            padding: EdgeInsets.only(left: 40.0,right: 40.0,top: 20.0,bottom: 20.0),
-                            child:SizedBox(
-                                width: MediaQuery.of(context).size.width*0.30,
-                                height: 100,
-                                child: ElevatedButton(
-                                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
-                                    overlayColor: MaterialStateProperty.all<Color>(Colors.red),
-                                  ),
-                                  child: Text('Officer Management',style: TextStyle(fontSize: 20,color: Colors.black),),
-                                  onPressed: (){
-
-                                  },
-                                )
-                            )
-                        ),
-                        Padding(
-                            padding: EdgeInsets.only(left: 40.0,right: 40.0,top: 20.0,bottom: 20.0),
-                            child:SizedBox(
-                                width: MediaQuery.of(context).size.width*0.30,
-                                height: 100,
-                                child: ElevatedButton(
-                                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
-                                    overlayColor: MaterialStateProperty.all<Color>(Colors.red),
-                                  ),
-                                  child: Text('Accused Management',style: TextStyle(fontSize: 20,color: Colors.black),),
-                                  onPressed: (){
-
-                                  },
-                                )
-                            )
-                        ),
-                        Padding(
-                            padding: EdgeInsets.only(left: 40.0,right: 40.0,top: 20.0,bottom: 20.0),
-                            child:SizedBox(
-                                width: MediaQuery.of(context).size.width*0.30,
-                                height: 100,
-                                child: ElevatedButton(
-                                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.green),
-                                    overlayColor: MaterialStateProperty.all<Color>(Colors.red),
-                                  ),
-                                  child: Text('Petitioner Management',style: TextStyle(fontSize: 20,color: Colors.black),),
-                                  onPressed: (){
-
-                                  },
-                                )
-                              )
-                            ),
-                          ],
-                        ),
-                      )
+      body: Container(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: <Widget>[
+          SizedBox(height: 20.0),
+          Text('Case Details', textAlign: TextAlign.center, style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold)),
+          DefaultTabController(
+              length: 6, // length of tabs
+              initialIndex: 0,
+              child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: <Widget>[
+                Container(
+                  child: TabBar(
+                    labelColor: Colors.green,
+                    unselectedLabelColor: Colors.black,
+                    tabs: [
+                      Tab(text: 'Fir Management'),
+                      Tab(text: 'Victim Management'),
+                      Tab(text: 'Petitioner Management'),
+                      Tab(text: 'Evidence Management'),
+                      Tab(text: 'Statenent Management'),
+                      Tab(text: 'Accused Management'),
                     ],
-                  )
-                ],
-              )
+                  ),
+                ),
+                Container(
+                    height: 400, //height of TabBarView
+                    decoration: BoxDecoration(
+                        border: Border(top: BorderSide(color: Colors.grey, width: 0.5))
+                    ),
+                    child: TabBarView(children: <Widget>[
+                      //CaseDataModel()
+                      AddFir(),
+                      VictimDataModel(),
+                      PetitionerDataModel(),
+                      EvidenceDataModel(),
+                      StatementsDataModel(),
+                      AccusedDataModel(),
+                    ])
+                )
+              ])
           ),
-
-        )
+        ]),
+      ),
       );
   }
 

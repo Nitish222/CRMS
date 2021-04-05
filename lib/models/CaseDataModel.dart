@@ -6,7 +6,7 @@ import 'package:myapp/screens/CaseDetails.dart';
 
 class CaseDataModel extends StatefulWidget{
   CaseDataModel():super();
-  final String title = 'Add Case';
+  final String title = 'Retrieve Case';
   @override
   _DataModel_State createState()=>_DataModel_State();
 
@@ -27,6 +27,8 @@ class _DataModel_State extends State<CaseDataModel>{
     //for users
     _case = [];
     _titleProgress = widget.title;
+    _CaseDescController = TextEditingController();
+    _CaseStatusController = TextEditingController();
   }
   _getAllCase(){
     _showProgress('Loading Case...');
@@ -56,7 +58,7 @@ class _DataModel_State extends State<CaseDataModel>{
         String des= _CaseDescController.text;
         String sta = _CaseStatusController.text;
         print(caseID+" "+des+" "+sta);
-        _showProgress('Updating Employees....');
+        _showProgress('Updating Case....');
         CaseAPI.updateCase(caseID, _CaseDescController.text, _CaseStatusController.text).then((result){
           if("success" == result){
               _getAllCase(); //Refresh the list after update
@@ -69,7 +71,7 @@ class _DataModel_State extends State<CaseDataModel>{
 
   }
   _deleteCase(Case Cases){
-    _showProgress('Deleting Employees....');
+    _showProgress('Deleting Case....');
     print("id is:"+Cases.caseID);
     CaseAPI.deleteCase(Cases.caseID).then((result){
       if("success" == result){
@@ -158,6 +160,8 @@ class _DataModel_State extends State<CaseDataModel>{
                                             ),
                                             child: Text('Submit',style: TextStyle(fontSize: 40,color: Colors.black),),
                                             onPressed: (){
+                                              print(_CaseStatusController.text+" "+_CaseDescController.text+" ");
+                                              print(cases.caseID);
                                               _updateCase(cases.caseID.toString());
                                             },
                                           )

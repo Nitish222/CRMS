@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:myapp/Services/CaseServices/Case.dart';
-import 'package:myapp/Services/CaseServices/CaseAPI.dart';
+import 'package:myapp/Services/Actors/VictimAPI.dart';
+import 'package:myapp/Services/CaseServices/victim.dart';
 
 class VictimDataModel extends StatefulWidget{
   VictimDataModel():super();
@@ -13,7 +13,7 @@ class VictimDataModel extends StatefulWidget{
 
 
 class _DataModel_State extends State<VictimDataModel>{
-  List<Victim> _case;
+  List<Victim> _victim;
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   bool _isUpdating;
   String _titleProgress;
@@ -43,8 +43,6 @@ class _DataModel_State extends State<VictimDataModel>{
   SingleChildScrollView _dataBody(){
     return SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: Align(
-          alignment: Align.,
           child: DataTable(
             columns:[
               DataColumn(label: Text('victim_id')),
@@ -58,19 +56,22 @@ class _DataModel_State extends State<VictimDataModel>{
             ],
             rows: _victim.map((victims)=> DataRow(
                 cells: [
-                  DataCell(Text(victims.victim_id)),
-                  DataCell(Text(victims.first_name.toUpperCase())),
-                  DataCell(Text(victims.last_name.toUpperCase())),
-                  DataCell(Text(victims.contact)),
-                  DataCell(Text(victims.gender)),
-                  DataCell(Text(victims.injuries)),
-                  DataCell(Text(victims.victim_address)),
-                  DataCell(Text(victims.statement_id)),
+                  DataCell(Text(victims.victim_id.toString())),
+                   DataCell( Text(victims.first_name.toString().toUpperCase()),
+                        ),
+                  DataCell(Text(victims.last_name.toString().toUpperCase())),
+                  DataCell( Text(victims.contact)
+                      ),
+                  DataCell(
+                          Text(victims.gender.toString()),
+                      ),
+                  DataCell(Text(victims.injuries.toString())),
+                  DataCell(Text(victims.victim_address.toString())),
+                  DataCell(Text(victims.statement_id.toString())),
                 ]
             )
             ).toList(),
           ),
-        )
     );
   }
   @override
