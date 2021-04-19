@@ -57,13 +57,13 @@ class _DataModel_State extends State<PetitionerDataModel>{
                 ],
             rows: _petitioner.map((petitioners)=> DataRow(
                 cells: [
-                  DataCell(Text(petitioners.petitioner_id)),
-                  DataCell(Text(petitioners.petitioner_first_name.toUpperCase())),
-                  DataCell(Text(petitioners.petitioner_last_name.toUpperCase())),
-                  DataCell(Text(petitioners.father_name)),
-                  DataCell(Text(petitioners.petitioner_gender)),
-                  DataCell(Text(petitioners.petitioner_contact))
-                  //DataCell(Text(petitioners.petitioner_address)),
+                  DataCell(Text(petitioners.petitioner_id.toString())),
+                  DataCell(Text(petitioners.petitioner_first_name.toString().toUpperCase())),
+                  DataCell(Text(petitioners.petitioner_last_name.toString().toUpperCase())),
+                  DataCell(Text(petitioners.father_name.toString())),
+                  DataCell(Text(petitioners.petitioner_gender.toString())),
+                  DataCell(Text(petitioners.petitioner_contact.toString())),
+                  DataCell(Text(petitioners.petitioner_address.toString())),
                 ]
             )
             ).toList(),
@@ -75,6 +75,7 @@ class _DataModel_State extends State<PetitionerDataModel>{
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(_titleProgress),
         actions: <Widget>[
           IconButton(icon: Icon(Icons.refresh),

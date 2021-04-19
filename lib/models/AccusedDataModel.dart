@@ -2,8 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/Services/Actors/AccusedAPI.dart';
 import 'package:myapp/Services/CaseServices/Accused.dart';
-import 'package:myapp/Services/CaseServices/Case.dart';
-import 'package:myapp/Services/CaseServices/CaseAPI.dart';
+
 
 class AccusedDataModel extends StatefulWidget{
   AccusedDataModel():super();
@@ -58,14 +57,14 @@ class _DataModel_State extends State<AccusedDataModel>{
             ],
             rows: _accused.map((accuseds)=> DataRow(
                 cells: [
-                  DataCell(Text(accuseds.accused_id)),
-                  DataCell(Text(accuseds.first_name.toUpperCase())),
-                  DataCell(Text(accuseds.last_name.toUpperCase())),
-                  DataCell(Text(accuseds.contact)),
-                  DataCell(Text(accuseds.gender)),
-                  DataCell(Text(accuseds.criminal_records)),
-                  DataCell(Text(accuseds.accused_address)),
-                  DataCell(Text(accuseds.statement_id)),
+                  DataCell(Text(accuseds.accused_id.toString())),
+                  DataCell(Text(accuseds.first_name.toString().toUpperCase())),
+                  DataCell(Text(accuseds.last_name.toString().toUpperCase())),
+                  DataCell(Text(accuseds.contact.toString())),
+                  DataCell(Text(accuseds.gender.toString())),
+                  DataCell(Text(accuseds.criminal_records.toString())),
+                  DataCell(Text(accuseds.accused_address.toString())),
+                  DataCell(Text(accuseds.statement_id.toString())),
                 ]
             )
             ).toList(),
@@ -77,6 +76,7 @@ class _DataModel_State extends State<AccusedDataModel>{
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(_titleProgress),
         actions: <Widget>[
           IconButton(icon: Icon(Icons.refresh),

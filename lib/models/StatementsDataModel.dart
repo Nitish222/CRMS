@@ -5,7 +5,7 @@ import 'package:myapp/Services/EvidenceCategoryServices/Statement.dart';
 
 class StatementsDataModel extends StatefulWidget{
   StatementsDataModel():super();
-  final String title = 'Add Statements';
+  final String title = 'View Statements';
   @override
   _DataModel_State createState()=>_DataModel_State();
 }
@@ -72,6 +72,7 @@ class _DataModel_State extends State<StatementsDataModel>{
       key: _scaffoldKey,
       appBar: AppBar(
         title: Text(_titleProgress),
+        automaticallyImplyLeading: false,
         actions: <Widget>[
           IconButton(icon: Icon(Icons.refresh),
               onPressed: (){

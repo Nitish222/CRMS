@@ -5,7 +5,8 @@ import 'package:myapp/Services/Authenticate.dart';
 import 'package:myapp/Services/Officer.dart';
 import 'package:myapp/Services/Services.dart';
 import 'package:myapp/Services/User.dart';
-import 'package:myapp/screens/OfficerDash.dart';
+import 'package:crypt/crypt.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 
 class Register extends StatefulWidget{
@@ -23,6 +24,7 @@ class _register_state extends State<Register>{
   TextEditingController _firstNameController;
   TextEditingController _lastNameController;
   TextEditingController _userRankController;
+  FlutterSecureStorage storage;
   Officer _selectOfficer;
   User _selectUser;
   bool _isUpdating;
@@ -39,9 +41,19 @@ class _register_state extends State<Register>{
     _firstNameController = TextEditingController();
     _userRankController = TextEditingController();
     _lastNameController = TextEditingController();
+    storage = FlutterSecureStorage();
     //for officers
     _officer = [];
 
+  }
+  void setPassword(String uid, String password) { // 1
+    String hashedPassword = Crypt.sha256(password).toString(); // 2
+    storage.write(key: uid, value: hashedPassword); // 3
+  }
+
+  Future<bool> checkPassword(String uid, String password) async { // 1
+    String storedHashedPassword = await storage.read(key: uid); // 2
+    return Future.value(Crypt(storedHashedPassword).match(password)); // 3
   }
 
   _createTable(){
@@ -66,6 +78,7 @@ class _register_state extends State<Register>{
   }
   _addOfficer(){
     _showProgress('Adding User...');
+
     Services.addOfficer(_firstNameController.text, _lastNameController.text, _userRankController.text).then((result){
       if("success"==result){
         _getOfficer(); //Refresh the list
@@ -75,6 +88,7 @@ class _register_state extends State<Register>{
   }
 
   _registerUser(){
+    //setPassword(uid, _userPassController.text);
     if(_userPassController.text.isEmpty||_firstNameController.text.isEmpty||_lastNameController.text.isEmpty){
       print("empty fields");
       return;

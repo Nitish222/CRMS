@@ -53,11 +53,11 @@ class EvidenceAPI{
   }
 
   //Method to add officer
-  static Future<String> addEvidence(String category_id, String item_description, String item_quantity) async{
+  static Future<String> addEvidence(String CategoryID, String item_description, String item_quantity) async{
     try{
       var map = Map<String, dynamic>();
       map['action'] = ADD_EVIDENCE_ACTION;
-      map['category_id'] = category_id;
+      map['category_id']= CategoryID;
       map['item_description'] = item_description;
       map['item_quantity'] = item_quantity;
       final response = await http.post(EvidenceRoot,body:map);
@@ -74,12 +74,12 @@ class EvidenceAPI{
   }
 
   //Method to update officer
-  static Future<String> updateEvidence(String evidence_id, String category_id, String item_description, String item_quantity) async {
+  static Future<String> updateEvidence(String evidenceID,String CategoryID, String item_description, String item_quantity) async {
     try{
       var map = Map<String, dynamic>();
       map['action'] = UPDATE_EVIDENCE_ACTION;
-      map['evidence_id'] = evidence_id;
-      map['category_id'] = category_id;
+      map['evidence_id'] = evidenceID;
+      map['category_id']= CategoryID;
       map['item_description'] = item_description;
       map['item_quantity'] = item_quantity;
       final response = await http.post(EvidenceRoot,body:map);

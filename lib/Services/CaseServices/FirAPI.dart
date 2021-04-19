@@ -34,7 +34,7 @@ class FirAPI{
       var map = Map<String, dynamic>();
       map['action'] = GET_ALL_ACTION;
       final response = await http.post(FirRoot,body:map);
-      print('getOfficers Response: ${response.body}');
+      print('getFir Response: ${response.body}');
       if(200 == response.statusCode){
         List<Fir> list = parseResponse(response.body);
         return list;
@@ -64,7 +64,7 @@ class FirAPI{
       map['incident_date'] = incidentDate;
       map['incident_location']= incidentLocation;
       final response = await http.post(FirRoot,body:map);
-      print('addCase Response: ${response.body}');
+      print('addFir Response: ${response.body}');
       if(200 == response.statusCode){
         return response.body;
       }

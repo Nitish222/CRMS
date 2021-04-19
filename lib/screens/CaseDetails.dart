@@ -4,6 +4,7 @@ import 'package:myapp/Services/CaseServices/Case.dart';
 import 'package:myapp/Services/CaseServices/CaseAPI.dart';
 import 'package:myapp/Services/CaseServices/petitioner.dart';
 import 'package:myapp/models/AccusedDataModel.dart';
+import 'package:myapp/models/CaseEvidenceDataModel.dart';
 import 'package:myapp/models/EvidenceCategoryDataModel.dart';
 import 'package:myapp/models/PetitionaerDataModel.dart';
 import 'package:myapp/models/StatementsDataModel.dart';
@@ -84,12 +85,12 @@ class _DataModel_State extends State<CaseDetails>{
                     labelColor: Colors.green,
                     unselectedLabelColor: Colors.black,
                     tabs: [
-                      Tab(text: 'Fir Management'),
                       Tab(text: 'Victim Management'),
                       Tab(text: 'Petitioner Management'),
-                      Tab(text: 'Evidence Management'),
                       Tab(text: 'Statenent Management'),
+                      Tab(text: 'Evidence Management'),
                       Tab(text: 'Accused Management'),
+                      Tab(text: 'Fir Management'),
                     ],
                   ),
                 ),
@@ -100,12 +101,12 @@ class _DataModel_State extends State<CaseDetails>{
                     ),
                     child: TabBarView(children: <Widget>[
                       //CaseDataModel()
-                      AddFir(),
                       VictimDataModel(),
                       PetitionerDataModel(),
-                      EvidenceDataModel(),
                       StatementsDataModel(),
+                      CaseEvidenceDataModel(),
                       AccusedDataModel(),
+                      AddFir(),
                     ])
                 )
               ])

@@ -31,6 +31,8 @@ dependencies:
   http: '0.11.3+17'
   date_format: ^2.0.2
   intl: ^0.17.0
+  flutter_secure_storage: ^3.3.5
+  crypt: ^3.0.1
 
 dev_dependencies:
   flutter_test:

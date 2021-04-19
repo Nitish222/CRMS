@@ -62,7 +62,7 @@ class _dashboard_state extends State<Login>{
           if(message=="incorrect password"){
             _showSnackBar(message);
           }
-          if(message == "success"){
+          else if(message == "success"){
             _showSnackBar(message);
             currentUserId= _userIdController.text;
             navigateToDashboard(currentUserId);

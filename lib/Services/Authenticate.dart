@@ -40,7 +40,7 @@ class Authenticate{
       map['pass'] = password;
       final response = await http.post(AUTH,body:map);
       print('Login Response: ${response.body}');
-      //print("response"+jsonDecode(response.body.toString()));
+      print("response"+jsonDecode(response.body.toString()));
       if(200 == response.statusCode){
         if(jsonDecode(response.body)=="no user") {
           return "Create Account!!";

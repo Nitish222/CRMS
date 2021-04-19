@@ -334,11 +334,159 @@ class _DataModel_State extends State<EvidenceDataModel>{
         automaticallyImplyLeading: false,
         title: Text(_titleProgress),
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.add),
-              onPressed: (){
-                _getAllEvidenceCat();
-              }
-          ),
+          ElevatedButton(child: Text('Add Category'),onPressed: (){
+            showDialog(
+                context: context,
+                builder: (context)
+                {
+                  return Dialog(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40)),
+                      elevation: 16,
+                      child: Container(
+                        height: 400.0,
+                        width: 360.0,
+                        child: ListView(
+                            children: <Widget>[
+                              Padding(
+                                  padding: EdgeInsets.all(20.0),
+                                  child: SizedBox(
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
+                                    height: 60,
+                                    child: new TextFormField(
+                                      controller: _categoryController,
+                                      decoration: const InputDecoration(
+                                          labelText: 'New Category',
+                                          icon: const Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 15.0),
+                                              child: const Icon(
+                                                  Icons.supervised_user_circle))),
+                                    ),
+                                  )),
+                              Padding(
+                                  padding: EdgeInsets.only(left: 40.0,
+                                      right: 40.0,
+                                      top: 20.0,
+                                      bottom: 20.0),
+                                  child: SizedBox(
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width,
+                                      height: 80,
+                                      child: ElevatedButton(
+                                        style: ButtonStyle(
+                                          backgroundColor: MaterialStateProperty
+                                              .all<Color>(Colors.green),
+                                          overlayColor: MaterialStateProperty.all<
+                                              Color>(Colors.red),
+                                        ),
+                                        child: Text('Submit', style: TextStyle(
+                                            fontSize: 40, color: Colors.black),),
+                                        onPressed: () {
+                                          _addCat();
+                                        },
+                                      )
+                                  )
+                              ),
+                            ]
+                        ),
+                      )
+                  );
+                }
+            );
+          }),
+
+          ElevatedButton(child: Text('Add Item'),onPressed: (){
+            showDialog(
+                context: context,
+                builder: (context)
+                {
+                  return Dialog(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40)),
+                      elevation: 16,
+                      child: Container(
+                        height: 400.0,
+                        width: 360.0,
+                        child: ListView(
+                            children: <Widget>[
+                              Padding(
+                                  padding: EdgeInsets.all(20.0),
+                                  child: SizedBox(
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
+                                    height: 60,
+                                    child: new TextFormField(
+                                      controller: _itemController,
+                                      decoration: const InputDecoration(
+                                          labelText: 'New Item',
+                                          icon: const Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 15.0),
+                                              child: const Icon(
+                                                  Icons.supervised_user_circle))),
+                                    ),
+                                  )),
+                              Padding(
+                                  padding: EdgeInsets.all(20.0),
+                                  child: SizedBox(
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
+                                    height: 60,
+                                    child: new TextFormField(
+                                      controller: _categoryIdController,
+                                      decoration: const InputDecoration(
+                                          labelText: 'Add Category ID Tag',
+                                          icon: const Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 15.0),
+                                              child: const Icon(
+                                                  Icons.supervised_user_circle))),
+                                    ),
+                                  )),
+                              Padding(
+                                  padding: EdgeInsets.only(left: 40.0,
+                                      right: 40.0,
+                                      top: 20.0,
+                                      bottom: 20.0),
+                                  child: SizedBox(
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width,
+                                      height: 80,
+                                      child: ElevatedButton(
+                                        style: ButtonStyle(
+                                          backgroundColor: MaterialStateProperty
+                                              .all<Color>(Colors.green),
+                                          overlayColor: MaterialStateProperty.all<
+                                              Color>(Colors.red),
+                                        ),
+                                        child: Text('Submit', style: TextStyle(
+                                            fontSize: 40, color: Colors.black),),
+                                        onPressed: () {
+                                          _addItem();
+                                        },
+                                      )
+                                  )
+                              ),
+                            ]
+                        ),
+                      )
+                  );
+                }
+            );
+          }),
+
           IconButton(icon: Icon(Icons.refresh),
               onPressed: (){
                 _getAllEvidenceCat();
@@ -346,178 +494,7 @@ class _DataModel_State extends State<EvidenceDataModel>{
           ),
         ],
       ),
-      body:Column(
-        children: [
-          Row(
-            children: [
-              Container(
-                alignment: Alignment.centerLeft,
-                child:  ElevatedButton(child: Text('Add Category'),onPressed: (){
-                  showDialog(
-                      context: context,
-                      builder: (context)
-                      {
-                        return Dialog(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(40)),
-                            elevation: 16,
-                            child: Container(
-                              height: 400.0,
-                              width: 360.0,
-                              child: ListView(
-                                  children: <Widget>[
-                                    Padding(
-                                        padding: EdgeInsets.all(20.0),
-                                        child: SizedBox(
-                                          width: MediaQuery
-                                              .of(context)
-                                              .size
-                                              .width,
-                                          height: 60,
-                                          child: new TextFormField(
-                                            controller: _categoryController,
-                                            decoration: const InputDecoration(
-                                                labelText: 'New Category',
-                                                icon: const Padding(
-                                                    padding: const EdgeInsets.only(
-                                                        top: 15.0),
-                                                    child: const Icon(
-                                                        Icons.supervised_user_circle))),
-                                          ),
-                                        )),
-                                    Padding(
-                                        padding: EdgeInsets.only(left: 40.0,
-                                            right: 40.0,
-                                            top: 20.0,
-                                            bottom: 20.0),
-                                        child: SizedBox(
-                                            width: MediaQuery
-                                                .of(context)
-                                                .size
-                                                .width,
-                                            height: 80,
-                                            child: ElevatedButton(
-                                              style: ButtonStyle(
-                                                backgroundColor: MaterialStateProperty
-                                                    .all<Color>(Colors.green),
-                                                overlayColor: MaterialStateProperty.all<
-                                                    Color>(Colors.red),
-                                              ),
-                                              child: Text('Submit', style: TextStyle(
-                                                  fontSize: 40, color: Colors.black),),
-                                              onPressed: () {
-                                                _addCat();
-                                              },
-                                            )
-                                        )
-                                    ),
-                                  ]
-                              ),
-                            )
-                        );
-                      }
-                  );
-                }),
-              ),
-
-              Container(
-                alignment: Alignment.centerLeft,
-                child:  ElevatedButton(child: Text('Add Item'),onPressed: (){
-                  showDialog(
-                      context: context,
-                      builder: (context)
-                      {
-                        return Dialog(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(40)),
-                            elevation: 16,
-                            child: Container(
-                              height: 400.0,
-                              width: 360.0,
-                              child: ListView(
-                                  children: <Widget>[
-                                    Padding(
-                                        padding: EdgeInsets.all(20.0),
-                                        child: SizedBox(
-                                          width: MediaQuery
-                                              .of(context)
-                                              .size
-                                              .width,
-                                          height: 60,
-                                          child: new TextFormField(
-                                            controller: _itemController,
-                                            decoration: const InputDecoration(
-                                                labelText: 'New Item',
-                                                icon: const Padding(
-                                                    padding: const EdgeInsets.only(
-                                                        top: 15.0),
-                                                    child: const Icon(
-                                                        Icons.supervised_user_circle))),
-                                          ),
-                                        )),
-                                    Padding(
-                                        padding: EdgeInsets.all(20.0),
-                                        child: SizedBox(
-                                          width: MediaQuery
-                                              .of(context)
-                                              .size
-                                              .width,
-                                          height: 60,
-                                          child: new TextFormField(
-                                            controller: _categoryIdController,
-                                            decoration: const InputDecoration(
-                                                labelText: 'Add Category ID Tag',
-                                                icon: const Padding(
-                                                    padding: const EdgeInsets.only(
-                                                        top: 15.0),
-                                                    child: const Icon(
-                                                        Icons.supervised_user_circle))),
-                                          ),
-                                        )),
-                                    Padding(
-                                        padding: EdgeInsets.only(left: 40.0,
-                                            right: 40.0,
-                                            top: 20.0,
-                                            bottom: 20.0),
-                                        child: SizedBox(
-                                            width: MediaQuery
-                                                .of(context)
-                                                .size
-                                                .width,
-                                            height: 80,
-                                            child: ElevatedButton(
-                                              style: ButtonStyle(
-                                                backgroundColor: MaterialStateProperty
-                                                    .all<Color>(Colors.green),
-                                                overlayColor: MaterialStateProperty.all<
-                                                    Color>(Colors.red),
-                                              ),
-                                              child: Text('Submit', style: TextStyle(
-                                                  fontSize: 40, color: Colors.black),),
-                                              onPressed: () {
-                                                _addItem();
-                                              },
-                                            )
-                                        )
-                                    ),
-                                  ]
-                              ),
-                            )
-                        );
-                      }
-                  );
-                }),
-              ),
-            ],
-          ),
-
-          Column(
-            children: [
-              _dataBody(),
-            ],
-          ),
-        ],
-      )
+      body:Center(child: _dataBody())
     );
   }
 

@@ -17,6 +17,7 @@ class Victim{
         last_name: json['last_name'] as String,
         contact: json['contact'] as String,
         gender: json['gender'] as String,
+        injuries: json['injuries'] as String,
         victim_address: json['victim_address'] as String,
         statement_id: json['statement_id'] as String
     );
